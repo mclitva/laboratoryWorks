@@ -34,9 +34,9 @@ def getEuclideanDistance(instance_to, instance_from, length):
 
 def getNeighbors(training_set, test_set_instance, k):
     distances = []
-    length = len(test_set_array) - 1
+    length = len(test_set_instance) - 1
     for x in range(len(training_set)):
-        dist = getEuclideanDistance(test_set_array, training_set[x], length)
+        dist = getEuclideanDistance(test_set_instance, training_set[x], length)
         distances.append((training_set[x], dist))
     distances.sort(key=operator.itemgetter(1))
     neighbors = []
@@ -83,8 +83,7 @@ def main():
         neighbors = getNeighbors(training_set, test_set[x], k)
         vote_result = getClassVoteResult(neighbors)
         predicted_values.append(vote_result)        
-        print("> predicted=" + repr(vote_result) +
-              ", actual=" + repr(test_set[x][-1]))
+        print("> Predicted value=%.2f, actual=%.2f" % (vote_result, test_set[x][-1]))
     accuracy = calculateAccuracy(test_set, predicted_values)
     print("Accuracy: " + repr(round(accuracy,4)) + '%')
 
