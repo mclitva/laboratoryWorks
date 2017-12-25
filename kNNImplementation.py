@@ -1,6 +1,6 @@
 """
-This eiample show how to classify wine
-based on an eiisting dataset from UCI Machine Learning Repository.
+This example show how to classify new data according to existing data.
+based on dataset from UCI Machine Learning Repository.
 The classification is made according to seven neighbors.
 """
 import random
