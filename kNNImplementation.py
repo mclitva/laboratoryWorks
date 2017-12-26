@@ -74,7 +74,7 @@ def main():
     training_set = []
     test_set = []
     GetTestAndTrainingSets(data_set,split_coef,test_set,training_set)
-    print("Count of elements in repository: " + repr(len(data_set)))    
+    print("Count of elements in Data Set: " + repr(len(data_set)))    
     print("Trainig set length: " + repr(len(training_set)))
     print("Test set length: " + repr(len(test_set)))
     predicted_values = []
