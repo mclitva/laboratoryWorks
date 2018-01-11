@@ -2,7 +2,6 @@
 
 import numpy as np
 import pandas as pd
-import scipy.stats as stats
 import matplotlib.pyplot as plot
 import sklearn
 
@@ -16,16 +15,14 @@ boston_frame['Price'] = boston.target
 
 X = boston_frame.drop('Price', axis = 1)
 lr = LinearRegression()
-lr.fit(X, boston_frame.Price)
-plot.scatter(boston_frame.RM, boston_frame.Price)
-plot.xlabel("Number of rooms per dwelling")
-plot.ylabel('Price')
-plot.title('Relationship between count of rooms and Price')
-plot.show()
+X_train, X_test, Y_train, Y_test = sklearn.model_selection.train_test_split(X, boston_frame.Price, test_size = 0.15, random_state = 5)
+lr.fit(X_train, Y_train)
+pred_train = lr.predict(X_train)
+pred_test = lr.predict(X_test)
 
-
-plot.scatter(boston_frame.Price, lr.predict(X))
-plot.xlabel("Prices: $Y_i$")
-plot.ylabel('Predicted prices: $\hat{Y}_i$')
-plot.title('Prices vs predictedPrices: $Y_i$ vs $\hat{Y}_i$')
+plot.scatter(pred_train, pred_train - Y_train, c = 'b', s = 40, alpha=0.5)
+plot.scatter(pred_test, pred_test - Y_test, c = 'r', s = 40)
+plot.hlines(y = 0, xmin = 0, xmax = 50)
+plot.title('Blue points = train data, Red points = test data')
+plot.ylabel('Residuals')
 plot.show()
