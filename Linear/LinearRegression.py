@@ -60,15 +60,13 @@ def simple_linear_regression(dataset):
     square_feet_variance = varianceOf(dataset[dataset_headers[0]])
     price_variance = varianceOf(dataset[dataset_headers[1]])
  
-    # Calculating the regression
     covariance_of_price_and_square_feet = dataset.cov()[dataset_headers[0]][dataset_headers[1]]
     w1 = covariance_of_price_and_square_feet / float(square_feet_variance)
  
     w0 = price_average - (w1 * square_feet_average)
- 
-    # Predictions
     dataset['PredictedPrice'] = w0 + w1 * dataset[dataset_headers[0]]
     print(dataset[['PredictedPrice','Size']])
+
     print(rootMeanSquareError(dataset[dataset_headers[1]],dataset['PredictedPrice']))
     return dataset
     
