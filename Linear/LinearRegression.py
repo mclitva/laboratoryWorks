@@ -51,12 +51,9 @@ def rootMeanSquareError(actual_readings, predicted_readings):
     return rmse
  
  
-def simple_linear_regression(dataset): 
-    # Get the dataset header names
+def simple_linear_regression(dataset):
     dataset_headers = get_headers(dataset)
-    print("Dataset Headers :: ", (dataset_headers))
- 
-    # Calculating the mean of the square feet and the price readings
+
     square_feet_average = average(dataset[dataset_headers[0]])
     price_average = average(dataset[dataset_headers[1]])
  
