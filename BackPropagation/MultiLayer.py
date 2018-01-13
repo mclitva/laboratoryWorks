@@ -3,7 +3,7 @@ from math import exp
 from matplotlib import pyplot
 
 
-class MLP:
+class MultiLayerPerceptron:
     # properties
     int_num_epochs = 1000
     int_num_input_neurons = 0
